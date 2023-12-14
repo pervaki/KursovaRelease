@@ -1,0 +1,31 @@
+/* Large: 992px - 1199px */
+@media (max-width: 1199px) {
+
+}
+
+/* Medium: 768px - 991px */
+@media (max-width: 991px) {
+
+}
+/* Small: 576px - 767px */
+@media (max-width: 767px) {
+    /* burger */
+    /* .header-burger{
+        display: block;
+        top: -40px;
+    }
+    .left-block{
+        position: absolute;
+        left: -270px;
+        transition: transform .5s;
+        max-width: 270px;
+    }
+    .global-wrapper.open .left-block{
+        transform: translateX(100%);
+    } */
+}
+
+/* Extra small: 0px (320px) - 575px */
+@media (max-width: 575px) {
+
+}

@@ -1,0 +1,120 @@
+﻿@model Furni.UI.Models.ViewModel.Admin.Orders.OrdersViewModel;
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="author" content="Untree.co">
+	<link rel="shortcut icon" href="favicon.png">
+	<meta name="description" content="" />
+	<meta name="keywords" content="bootstrap, bootstrap4" />
+	<!-- Bootstrap CSS -->
+	<link href="~/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+	<link href="~/css/tiny-slider.css" rel="stylesheet">
+	<link href="~/css/style.css" rel="stylesheet">
+	<title>Кабінет користувача - Налаштування</title>
+</head>
+<body>
+	<header class="header">
+		<div class="headerContainer">
+			<a asp-action="Index" asp-controller="Home"><h2 class="header-title">Furni.</h2></a>
+			<div class="dropdown">
+				<button class="dropdown-header dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">@Model.UserName</button>
+				<ul class="dropdown-menu">
+					<li><a class="dropdown-item media" asp-action="Users" asp-controller="Admin">Users</a></li>
+					<li><a class="dropdown-item media" asp-action="Orders" asp-controller="Admin">Orders</a></li>
+					<li><a class="dropdown-item media" asp-action="Products" asp-controller="Admin">Products</a></li>
+					<li><a class="dropdown-item media" asp-action="Coupons" asp-controller="Admin">Coupons</a></li>
+					<li><a class="dropdown-item media" asp-action="SendMoreMessage" asp-controller="Admin">Mailer</a></li>
+					<li>
+						<form asp-action="Logout" asp-controller="Account" method="post">
+							<button type="submit" class="dropdown-item text-danger">Logout</button>
+						</form>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</header>
+	<main class="main">
+		<section class="global-wrapper">
+			<div class="left-block">
+				<div class="orders-wrapper">
+					<a asp-action="Users" asp-controller="Admin" class="orders-link">
+						<img src="~/images/account/user.png" alt="usersIcon" />
+						<div class="orders-title">Users</div>
+					</a>
+				</div>
+				<span></span>
+				<div class="orders-wrapper">
+					<a asp-action="Orders" asp-controller="Admin" class="orders-link">
+						<img src="~/images/account/order_1.png" alt="order">
+						<div class="orders-title">Orders</div>
+					</a>
+				</div>
+				<span></span>
+				<div class="orders-wrapper">
+					<a asp-action="Products" asp-controller="Admin" class="orders-link">
+						<img src="~/images/account/order_1.png" alt="dishes">
+						<div class="orders-title">Products</div>
+					</a>
+				</div>
+				<span></span>
+				<div class="orders-wrapper">
+					<a asp-action="Coupons" asp-controller="Admin" class="orders-link">
+						<img src="~/images/account/order_1.png" alt="coupons">
+						<div class="orders-title">Coupon</div>
+					</a>
+				</div>
+
+				<div class="orders-wrapper">
+					<a asp-action="Messages" asp-controller="Admin" class="orders-link">
+						<img src="~/images/account/order_1.png" alt="coupons">
+						<div class="orders-title">Mailer</div>
+					</a>
+				</div>
+			</div>
+			<div class="change p-4">
+
+				<table class="table">
+					<thead>
+						<tr>
+							<th scope="col">ID Order</th>
+							<th scope="col">ID User</th>
+							<th scope="col">Total Price</th>
+							<th scope="col-2">Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						@{
+							if (Model.Orders != null)
+							{
+								foreach (var item in Model.Orders)
+								{
+									<tr>
+										<th scope="col">@item.StringId</th>
+										<th scope="col">@item.IdUser</th>
+										<th scope="col">@item.Total</th>
+										<th scope="col">
+											<div class="col">
+												<form asp-action="DeleteOrder" asp-controller="Admin" method="post">
+													<button type="submit" class="btn-outline-danger">Delete</button>
+													<input type="hidden" value="@item.StringId" name="Id" />
+												</form>
+											</div>
+										</th>
+									</tr>
+								}
+							}
+						}
+					</tbody>
+				</table>
+			</div>
+		</section>
+	</main>
+	<footer class="panelfooter">
+		<div class="panelfooter-title">Copyright © 2022 Urbanui. All rights reserved.</div>
+	</footer>
+</body>
+</html>
